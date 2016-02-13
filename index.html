@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Babel</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="node_modules/shower-material/styles/screen-16x10.css">
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/anka-coder" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+</head>
+<body class="shower list">
+
+<style>
+  .slide h2 {
+    font-family: "Open Sans Condensed";
+    font-weight: bold;
+    font-size: 80px;
+  }
+  .slide .cover {
+    height: 100%;
+    max-width: none !important;
+  }
+  .slide.dark {
+    color: #fdfdfd;
+    background-color: black;
+    text-shadow: 1px 1px 5px rgba(12, 12, 12, .5);
+  }
+  .slide.dark h2 {
+    color: #fdfdfd;
+  }
+  .slide code {
+    font-family: "Anka Coder", Menlo, monospace;
+    /*font-family: "Fira Code";*/
+  }
+  .slide:after {
+    left: auto;
+    right: 96px;
+  } 
+  main.list {
+    width: 1120px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: "Open Sans";
+  }
+  .slide a {
+    color: #4a90e2;
+  }
+  .slide mark, .slide code {
+    background-color: rgba(65, 144, 242, .3);
+  }
+  body.shower, .caption h1 {
+    font-family: 'Open Sans';
+  }
+  .shower .caption {
+    background-color: white;
+    background-image: linear-gradient(135deg, #4a90e2 50%, rgba(65, 144, 242, .8) 50%);
+  }
+</style>
+
+  <header class="caption">
+    <h1>На чем стоит Вавилон</h1>
+    <p><a href="https://github.com/nitive/babel">on GitHub</a></p>
+  </header>
+
+  <main class="list">
+    <section class="slide markdown dark" id="start">
+      ## На чем стоит Вавилон
+      <!-- <img class="logo" src="pictures/babel.svg" alt="Babel logo"> -->
+      <img src="pictures/tower.jpg" alt="tower of babel" class="cover">
+      <a class="comment" href="//github.com/nitive" target="_blank">Максим Самойлов</a>
+      <style>
+        #start .logo {
+          width: 400px;
+        }
+        #start .comment {
+          position: absolute;
+          left: 120px;
+          bottom: 80px;
+          border-bottom: 2px solid;
+          border-color: transparent;
+          color: inherit;
+          line-height: 1.4;
+          background: initial;
+          cursor: pointer;
+        }
+        #start .comment:hover {
+          border-color: #FFF;
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown dark" id="what-is-babel">
+      ## Что такое Babel?
+      <img class="cover" src="pictures/wib.png">
+      <style>
+        #what-is-babel h2 {
+          position: absolute;
+          left: 70px;
+          bottom: 100px;
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown" id="how-works">
+      <!-- Схема с этапами работы -->
+      <div class="scheme column">
+        <div class="step">JavaScript</div>
+        <div class="arrow"></div>
+        <div class="box">Парсинг</div>
+        <div class="arrow"></div>
+        <div class="box">Трансформация</div>
+        <div class="arrow"></div>
+        <div class="box">Генерация</div>
+        <div class="arrow"></div>
+        <div class="step">JavaScript</div>
+      </div>
+      <style>
+        #how-works {
+          padding: 0;
+          display: flex;
+        }
+        .scheme {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: auto;
+        }
+        .scheme.column {
+          flex-direction: column;
+        }
+        .arrow {
+          display: inline-block;
+          width: 80px;
+          align-self: center;
+          text-align: center;
+          /*background-color: red;*/
+        }
+        .arrow::after {
+          content: "↓";
+        }
+        .arrow.right {
+          transform: rotate(-90deg);
+        }
+        .box {
+          display: inline-block;
+          padding: 5px 20px;
+          font-weight: 600;
+          color: #0a90e2;
+          border: 3px solid #0a90e2;
+        }
+        .box.fill {
+          background-color: #0a90e2;
+          color: #fdfdfd;
+        }
+        .step {
+          margin: -10px;
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown" id="lexical-analysis">
+      <!-- ## Парсинг -->
+      <!-- Парсер - babylon -->
+      <div class="scheme">
+        <div class="box fill">Лексический анализ</div>
+        <div class="arrow right"></div>
+        <div class="box">Синтаксический анализ</div>
+      </div>
+      <pre>
+        <code>[</code>
+        <code>  { type: { ... }, value: <mark>"n"</mark>, start: 0, ... },</code>
+        <code>  { type: { ... }, value: <mark>"*"</mark>, start: 2, ... },</code>
+        <code>  { type: { ... }, value: <mark>"n"</mark>, start: 4, ... },</code>
+        <code>]</code>
+      </pre>
+      <style>
+        #lexical-analysis {
+          padding-top: 70px;
+        }
+        #lexical-analysis pre {
+          margin-top: 120px;
+          margin-left: 120px;
+          margin-right: 120px;
+          font-size: 22px
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown" id="syntax-analysis">
+      <!-- ## Парсинг -->
+      <!-- Парсер - babylon -->
+      <div class="scheme">
+        <div class="box">Лексический анализ</div>
+        <div class="arrow right"></div>
+        <div class="box fill">Синтаксический анализ</div>
+      </div>
+      <pre>
+        <code>- BinaryExpression</code>
+        <code>  - operator: <mark>*</mark></code>
+        <code>  - left</code>
+        <code>    - Identifier</code>
+        <code>      - name: <mark>n</mark></code>
+        <code>  - right</code>
+        <code>    - Identifier</code>
+        <code>      - name: <mark>n</mark></code>
+      </pre>
+      <style>
+        #syntax-analysis {
+          padding-top: 70px;
+        }
+        #syntax-analysis pre {
+          margin-top: 50px;
+          margin-left: 150px;
+          font-size: 22px
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown" id="astexplorer">
+      <h2>
+        <a href="http://astexplorer.net" target="_blank">AST Explorer</a>
+      </h2>
+      <img class="cover" src="pictures/astexplorer.png" alt='AST Explorer'>
+      <style>
+        #astexplorer h2 {
+          position: absolute;
+          left: 180px;
+          bottom: 100px;
+          font-size: 60px;
+        }
+      </style>
+    </section>
+
+    <section class="slide" id="transformation">
+      <h2>Трансформация</h2>
+      <div class="example">
+        <code>n ** 2</code><div class="arrow right"></div><code>n * n</code>
+      </div>
+      <pre>
+        <code><mark>BinaryExpression</mark>(path) {</code>
+        <code>  if (<mark>path.node.operator === '**'</mark>) {</code>
+        <span class="next">
+          <code>    path.replaceWith(t.<mark>binaryExpression</mark>(</code>
+          <code>      <mark>'*', path.node.left, path.node.left</mark></code>
+          <code>    ))</code>
+        </span>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+      <style>
+        #transformation {
+          padding-top: 50px;
+        }
+        #transformation .example {
+          position: absolute;
+          right: 280px;
+          bottom: 120px;
+          padding: 10px 20px;
+          border: 2px solid #4a90e2;
+        }
+        #transformation pre {
+          margin-top: 70px;
+          margin-left: 120px;
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown" id="generation">
+      ## Генерация
+      <div class="scheme">
+        <div class="box">AST</div>
+        <div class="arrow right"></div>
+        <div class="box">String</div>
+      </div>
+      <style>
+        #generation .scheme {
+          margin-top: 100px;
+          font-size: 40px;
+        }
+        #generation .box {
+          padding: 10px 35px;
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown dark">
+      ## Проблема
+      <!-- Когда мне предложили писать на ES6, я неделю спорил, что кофескрипт лучше -->
+      <img src="pictures/problem.png" alt="Проблема" class="cover">
+    </section>
+
+    <section class="slide markdown" id="new-standarts">
+      ## Новые стандарты
+      <pre>
+        <code>import { <mark>chunk</mark> } from "lodash"</code>
+        <code>app.get("/users", <mark>async</mark> (req, res) <mark>=></mark> {</code>
+        <code>  <mark>const</mark> { <mark>users</mark> } = <mark>await</mark> db.getData()</code>
+        <code>  res.render("users", { <mark>users</mark> })</code>
+        <code>})</code>
+      </pre>
+      <style>
+        #new-standarts pre {
+          margin-top: 70px;
+          margin-left: 130px;
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown" id="syntax">
+      ## Синтаксис
+      <pre>
+        <code>const Button = ({ children }) => {</code>
+        <code>  return <mark>&lt;button&gt;{ children }&lt;/button&gt;</mark></code>
+        <code>}</code>
+      </pre>
+      <div class="box next">
+        <code>React.createElement(</code>
+        <br>
+        <code>&nbsp;&nbsp;"button", null, children</code>
+        <br>
+        <code>)</code>
+      </div>
+      <style>
+      #syntax pre {
+        margin-top: 100px;
+        margin-left: 130px;
+      }
+      #syntax .box {
+        position: absolute;
+        right: 200px;
+        bottom: 80px;
+      }
+      #syntax .box code {
+        background: none;
+        color: black;
+        font-weight: 400;
+      }
+      </style>
+    </section>
+
+    <section class="slide markdown" id="types">
+      ## Типизация
+      <!-- <img src="pictures/types.png" alt="types in javascript"> -->
+      <pre>
+        <code><mark class="type">type</mark> <mark class="key">RequestParams</mark>&lt;<mark class="type">T</mark>&gt; = {</code>
+        <code>  <mark class="key">url</mark><mark class="semi">:</mark> <mark class="type">string</mark>,</code>
+        <code>  <mark class="key">method<mark class="question">?</mark></mark><mark class="semi">:</mark> <mark class="string">"GET"</mark>,</code>
+        <code>  <mark class="key">json<mark class="question">?</mark></mark><mark class="semi">:</mark> <mark class="type">boolean</mark>,</code>
+        <code>  <mark class="key">headers<mark class="question">?</mark></mark><mark class="semi">:</mark> {</code>
+        <code>    [<mark class="key">name</mark><mark class="semi">:</mark> <mark class="type">string</mark>]<mark class="semi">:</mark> <mark class="type">string</mark></code>
+        <code>  },</code>
+        <code>  <mark class="key">process<mark class="question">?</mark></mark><mark class="semi">:</mark> <mark class="bracket">(</mark></code>
+        <code>    <mark class="key">req</mark><mark class="semi">:</mark> <mark class="type">Request</mark>,</code>
+        <code>    <mark class="key">resolve</mark><mark class="semi">:</mark> <mark class="bracket">(</mark>body<mark class="semi">:</mark> <mark class="type">T</mark><mark class="bracket">)</mark> => <mark class="type">void</mark>,</code>
+        <code>    <mark class="key">reject</mark><mark class="semi">:</mark> <mark class="bracket">(</mark>err<mark class="semi">:</mark> <mark class="type">T</mark><mark class="bracket">)</mark> => <mark class="type">void</mark></code>
+        <code>  <mark class="bracket">)</mark> => <mark class="type">void</mark>;</code>
+        <code>};</code>
+      </pre>
+      <style>
+        #types {
+          padding-top: 50px;
+        }
+        #types h2 {
+          font-size: 50px;
+        }
+        #types pre {
+          margin-top: 50px;
+          margin-left: 200px;
+        }
+        #types code {
+          line-height: 1.4;
+        }
+        #types .key {
+          background-color: transparent;
+          color: #333;
+          /*color: #2795ee;*/
+        }
+        #types .semi,
+        #types .question,
+        #types .bracket {
+          background-color: transparent;
+          color: #249d7f;
+        }
+        #types .string {
+          background-color: transparent;
+          color: #249d7f;
+        }
+        #types .type {
+          background-color: transparent;
+          color: #f18c16;
+        }
+      </style>
+    </section>
+
+
+<!--     <section class='slide markdown'>
+      ## Посетители
+    </section>
+ -->
+<!--     <section class='slide markdown'>
+      ## Пути
+    </section>
+ -->
+
+    <section class='slide markdown dark'>
+      ## Пробуем
+      <img class="cover" src="pictures/fight.png" alt='Neo vs Morpheus'>
+    </section>
+
+    <section class='slide markdown' id='css-modules'>
+      ## CSS Modules
+      Проблемы:
+      <ol>
+        <li class="next"><code>&lt;div className={styles.button + styles['size-m']} /&gt;</code></li>
+        <div class="next">Хочется <code>&lt;div styleName='button size-m' /&gt;</code></div>
+        <li class="next"><code>&lt;div className={styles['size-<mark>M</mark>']} /&gt;</code></li>
+        <div class="next">Получим <code>&lt;div class='undefined'&gt;&lt;/div&gt;</code></div>
+        <div class="next">Хочется <mark class="error">Err: class .size-M not found in your css file.</mark></div>
+      </ol>
+      <style>
+        #css-modules code {
+          background-color: #fbfbfb;
+        }
+        #css-modules .error {
+          font-family: monospace;
+          background-color: #fbfbfb;
+          color: red;
+        }
+      </style>
+    </section>
+
+    <section class='slide markdown' id='css-modules-example'>
+      <pre>
+        <code>export default function ({ types: t, template }) {</code>
+        <code>  return {</code>
+        <code>    visitor: {</code>
+        <code>      <mark>JSXAttribute</mark>(path) {</code>
+        <code>        if (path.node.name.name !== 'styleName') return</code>
+        <code>        <mark>path.node.name.name = 'className'</mark></code>
+        <code>        const classes = path.node.value.value</code>
+        <code>        path.node.value = t.jSXExpressionContainer(</code>
+        <code>          template(classes.split(' ')</code>
+        <code>            <mark>.map(className => `styles['${className}']`)</mark></code>
+        <code>            .join(' + '))().expression</code>
+        <code>        )</code>
+        <code>      }</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+      <style>
+      #css-modules-example code {
+        font-size: 20px;
+        line-height: 1.4;
+      }
+      </style>
+    </section>
+
+<!--     <section class='slide markdown'>
+      ## CSS Modules React
+      Добавил чекер
+    </section>
+ -->
+<!--     <section class='slide markdown'>
+      ## CSS Modules React
+      Будущее с декораторами
+    </section>
+ -->
+    <section class="slide markdown" id="eslint-example">
+      ## ESLint
+      <pre>
+        <code>module.exports = context => {</code>
+        <code>  return {</code>
+        <code>    <mark>Identifier</mark>(node) {</code>
+        <span class="next">
+          <code>      if (<mark>node.name.length < 3</mark>) {</code>
+          <span class="next">
+            <code>        <mark>context.report</mark>(</code>
+            <code>          { type: 'id-length', loc: node.loc },</code>
+            <code>          'Identifier should have more then 3 symbols'</code>
+            <code>        )</code>
+          </span>
+          <code>      }</code>
+        </span>
+        <code>    },</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+      <style>
+        #eslint-example {
+          padding-top: 50px;
+        }
+        #eslint-example code {
+          line-height: 1.4;
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown" id="lodash">
+      ## Lodash
+      <pre>
+        <code>import _ from 'lodash'</code>
+        <code>_.map([1, 2, 3], x => x * x)</code>
+      </pre>
+      <div class='arrow'></div>
+      <pre>
+        <code>import <mark>_map</mark> from <mark>'lodash/collection/map'</mark></code>
+        <code><mark>_map</mark>([1, 2, 3], x => x * x)</code>
+      </pre>
+      <style>
+        #lodash pre {
+          margin-bottom: 0;
+          padding: 10px 20px;
+          background-color: #fbfbfb;
+          border-radius: 5px;
+        }
+        #lodash code {
+          margin-left: -40px;
+        }
+        #lodash mark {
+          z-index: 0;
+        }
+        #lodash .arrow {
+          width: 100%;
+          text-align: center;
+        }
+      </style>
+    </section>
+
+    <section class="slide markdown dark">
+      ## Что дальше?
+      <img src="pictures/tablet.png" alt="" class="cover">
+    </section>
+
+    <section class="slide markdown" id="next-step">
+      [Официальный сайт](https://babeljs.io)
+      [Руководство пользователя Babel](https://github.com/thejameskyle/babel-handbook/blob/master/translations/ru/user-handbook.md)
+      [Руководство по созданию плагинов](https://github.com/thejameskyle/babel-handbook/blob/master/translations/ru/plugin-handbook.md)
+      [Документация babel-types](https://github.com/babel/babel/tree/master/packages/babel-types)
+    </section>
+    <style>
+    #next-step a {
+      margin: auto;
+      font-size: 45px;
+    }
+    </style>
+  </main>
+
+  <p class="badge">
+    <a href="https://github.com/nitive/babel">Fork me on GitHub</a>
+  </p>
+  <!--
+    To hide progress bar from entire presentation
+    just remove “progress” element.
+    -->
+  <div class="progress"></div>
+  <style>
+    .progress {
+      height: 3px;
+      background-color: #4a90e2;
+    }
+  </style>
+  <script src="node_modules/shower-core/shower.min.js"></script>
+  <script src="node_modules/shower-markdown/shower-markdown.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

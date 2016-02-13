@@ -1,0 +1,70 @@
+{
+  "name": "shower",
+  "description": "Shower HTML presentation engine",
+  "version": "2.0.3",
+  "author": {
+    "name": "Vadim Makeev",
+    "url": "http://pepelsbey.net/"
+  },
+  "homepage": "https://github.com/shower/shower",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shower/shower.git"
+  },
+  "bugs": {
+    "url": "http://github.com/shower/shower/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "shower",
+    "presentation",
+    "template"
+  ],
+  "dependencies": {
+    "markdown-it": "^5.0.2",
+    "shower-core": "^2.0.0",
+    "shower-markdown": "0.0.7",
+    "shower-material": "^1.0.0",
+    "shower-ribbon": "^2.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "grunt": "^0.4.5",
+    "grunt-bump": "0.7.0",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-contrib-compress": "^0.14.0",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-gh-pages": "^1.0.0",
+    "grunt-text-replace": "^0.4.0",
+    "load-grunt-tasks": "^3.3.0"
+  },
+  "gitHead": "b7627210fc0c305d85c80053c017d398195c0b20",
+  "_id": "shower@2.0.3",
+  "scripts": {
+    "start": "browser-sync start --files . --server"
+  },
+  "_shasum": "a29fc0c6f1ea20fb5a2a355812b57844b2d33f24",
+  "_from": "shower@*",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.1.1",
+  "_npmUser": {
+    "name": "pepelsbey",
+    "email": "pepelsbey@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "pepelsbey",
+      "email": "pepelsbey@gmail.com"
+    },
+    {
+      "name": "zloylos",
+      "email": "i@zloylos.me"
+    }
+  ],
+  "dist": {
+    "shasum": "a29fc0c6f1ea20fb5a2a355812b57844b2d33f24",
+    "tarball": "http://registry.npmjs.org/shower/-/shower-2.0.3.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/shower/-/shower-2.0.3.tgz"
+}
